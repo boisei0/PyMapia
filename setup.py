@@ -22,5 +22,5 @@ setup(
     ],
     keywords='sdk api maps wiki',
     install_requires=['requests'],
-    packages=['pympia']
+    packages=['pymapia']
 )
