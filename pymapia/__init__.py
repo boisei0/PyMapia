@@ -2,7 +2,7 @@
 import requests
 
 __author__ = 'Rob Derksen <rob.derksen@hubsec.eu>'
-__version__ = '0.1'
+__version__ = '0.1.1'
 
 
 class PyMapia:
@@ -62,7 +62,7 @@ class PyMapia:
         return requests.get(url).json()
 
     def get_place_by_area(self, bbox=None, tile_coordinates=None, language=None, data_blocks=None, options=None,
-                          count=50, page=1, category=None, category_or=None):
+                          count=5, page=1, category=None, category_or=None):
         """
         Returns all places in the given boundary box optionally filtered by category parameter. Only basic information
         is available: id, title, url, location and polygon of each place. Location and polygon fields can be turned off
@@ -87,7 +87,7 @@ class PyMapia:
                 * mercator - all coordinates will be in the Mercator format instead of the default format.
         :type options: list
         :param count:
-            This is a variable that determines the number of results per page. 50 is default (5 min, 100 max).
+            This is a variable that determines the number of results per page. 5 is default (5 min, 100 max).
         :type count: int
         :param page:
             The page number. 1 is default.
@@ -130,7 +130,7 @@ class PyMapia:
             url += '&data_blocks=' + ','.join(data_blocks)
         if options and isinstance(options, list):
             url += '&options=' + ','.join(options)
-        if count != 50:
+        if count != 5:
             url += '&count=' + str(count)
         if page != 1:
             url += '&page=' + str(page)
@@ -141,7 +141,7 @@ class PyMapia:
 
         return requests.get(url).json()
 
-    def get_nearest_place(self, lat, lon, language=None, data_blocks=None, options=None, page=1, count=50,
+    def get_nearest_place(self, lat, lon, language=None, data_blocks=None, options=None, page=1, count=5,
                           category=None):
         """
         Returns search results of objects, closest to the selected point. Optionally filtered by category parameter.
@@ -170,7 +170,7 @@ class PyMapia:
             The page number. 1 is default.
         :type page: int
         :param count:
-            This is a variable that determines the number of results per page. 50 is default (5 min, 100 max).
+            This is a variable that determines the number of results per page. 5 is default (5 min, 100 max).
         :type count: int
         :param category:
             The WikiMapia category code as a list with category ids or text queries in UTF-8: School, Church, etc.
@@ -186,7 +186,7 @@ class PyMapia:
             url += '&data_blocks=' + ','.join(data_blocks)
         if options and isinstance(options, list):
             url += '&options=' + ','.join(options)
-        if count != 50:
+        if count != 5:
             url += '&count=' + str(count)
         if page != 1:
             url += '&page=' + str(page)
@@ -195,7 +195,7 @@ class PyMapia:
 
         return requests.get(url).json()
 
-    def search_place(self, query, lat, lon, language=None, data_blocks=None, options=None, page=1, count=50,
+    def search_place(self, query, lat, lon, language=None, data_blocks=None, options=None, page=1, count=5,
                      category=None, category_or=None, distance=None):
         """
         Returns search results of a given query, optionally filtered by category. Only basic information is available:
@@ -224,7 +224,7 @@ class PyMapia:
                 * mercator - all coordinates will be in the Mercator format instead of the default format.
         :type options: list
         :param count:
-            This is a variable that determines the number of results per page. 50 is default (5 min, 100 max).
+            This is a variable that determines the number of results per page. 5 is default (5 min, 100 max).
         :type count: int
         :param page:
             The page number. 1 is default.
@@ -252,7 +252,7 @@ class PyMapia:
             url += '&data_blocks=' + ','.join(data_blocks)
         if options and isinstance(options, list):
             url += '&options=' + ','.join(options)
-        if count != 50:
+        if count != 5:
             url += '&count=' + str(count)
         if page != 1:
             url += '&page=' + str(page)
