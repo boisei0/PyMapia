@@ -422,7 +422,7 @@ class PyMapia:
         if language and isinstance(language, str):
             url += '&language=' + language
         if name and isinstance(name, str):
-            url += '&language=' + name
+            url += '&name=' + name
         if count != 50:
             url += '&count=' + str(count)
         if page != 1:
